@@ -1,0 +1,129 @@
+.main { min-height: 100vh; }
+.hero {
+  background: var(--navy);
+  padding: 140px 0 70px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content:''; position:absolute;
+  width:500px; height:500px;
+  background: radial-gradient(circle, rgba(244,180,0,0.1) 0%, transparent 65%);
+  top:-150px; right:0; border-radius:50%; pointer-events:none;
+}
+.overline {
+  display: block; font-size:0.7rem; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:0.75rem;
+}
+.hero h1 { font-size:clamp(2.25rem,4vw,3.25rem); font-weight:900; color:var(--white); margin-bottom:0.75rem; }
+.hero p { color:rgba(255,255,255,0.65); font-size:0.95rem; max-width:520px; }
+
+.body { padding: 60px 0 100px; background: var(--stone); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.contactInfo {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1.5px solid var(--border);
+  position: sticky;
+  top: 100px;
+}
+.contactInfo h3 { font-size:1.1rem; font-weight:800; color:var(--navy); margin-bottom:1.5rem; }
+.contactItem {
+  display: flex; gap:0.875rem; align-items:flex-start;
+  margin-bottom:1.25rem;
+}
+.contactItem span { font-size:1.25rem; flex-shrink:0; margin-top:2px; }
+.contactItem div { display:flex; flex-direction:column; gap:0.2rem; }
+.contactItem strong { font-size:0.8rem; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:0.05em; }
+.contactItem p, .contactItem a { font-size:0.875rem; color:var(--text-muted); text-decoration:none; }
+.contactItem a:hover { color:var(--gold); }
+
+.divider { height:1px; background:var(--border); margin:1.5rem 0; }
+
+.appointmentCta { }
+.appointmentCta h4 { font-size:0.95rem; font-weight:800; color:var(--navy); margin-bottom:0.5rem; }
+.appointmentCta p { font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+
+/* Tabs */
+.formArea {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--stone);
+}
+.tab {
+  flex: 1; padding:1rem; background:none; border:none;
+  cursor:pointer; font-family:var(--font-body);
+  font-weight:600; font-size:0.875rem; color:var(--text-muted);
+  border-bottom:3px solid transparent;
+  transition:all 0.2s;
+}
+.tab:hover { color:var(--navy); }
+.tab.active { color:var(--navy); border-bottom-color:var(--gold); background:var(--white); }
+
+.form { padding:2rem; }
+.row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+.prayerNote {
+  display:flex; gap:0.75rem; align-items:flex-start;
+  background:var(--gold-muted); border-radius:10px;
+  padding:1rem 1.25rem; margin-bottom:1.5rem;
+  border-left:3px solid var(--gold);
+}
+.prayerNote span { font-size:1.25rem; flex-shrink:0; }
+.prayerNote p { font-size:0.85rem; color:var(--text-muted); line-height:1.55; margin:0; }
+
+.checkboxRow { margin-bottom:1rem; }
+.checkLabel {
+  display:flex; align-items:center; gap:0.5rem;
+  font-size:0.875rem; font-weight:500; color:var(--navy);
+  cursor:pointer;
+}
+.checkLabel input[type='checkbox'] {
+  width:16px; height:16px; accent-color:var(--gold);
+  cursor:pointer;
+}
+
+/* Success state */
+.success {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.successIcon { font-size:3.5rem; margin-bottom:1rem; }
+.success h3 { font-size:1.75rem; color:var(--navy); margin-bottom:0.75rem; }
+.success p { color:var(--text-muted); font-size:0.95rem; max-width:400px; margin:0 auto 1rem; line-height:1.7; }
+.verse {
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:0.9rem !important;
+  color:var(--navy) !important;
+  background:var(--gold-muted);
+  padding:0.875rem 1.25rem;
+  border-radius:8px;
+  border-left:3px solid var(--gold);
+  text-align:left;
+  margin-bottom:1.5rem !important;
+}
+
+@media (max-width:900px) {
+  .layout { grid-template-columns:1fr; }
+  .contactInfo { position:static; }
+  .row { grid-template-columns:1fr; }
+}
+@media (max-width:500px) {
+  .form { padding:1.5rem; }
+}
