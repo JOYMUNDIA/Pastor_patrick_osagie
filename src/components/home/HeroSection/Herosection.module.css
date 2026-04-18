@@ -140,7 +140,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--navy);
   margin-bottom: 1rem;
   opacity: 0;
 }
@@ -155,12 +155,23 @@
 .gold { color: var(--gold); }
 .navy { color: var(--navy); }
 
+
 .badges {
   display: flex;
   flex-wrap: wrap;
   gap: 0.625rem;
   margin-bottom: 1.5rem;
   opacity: 0;
+}
+
+.badge {
+  background: rgba(218, 218, 218, 0.5);
+  color: var(--navy);
+  border-left: 3px solid var(--gold);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .signature {
@@ -185,19 +196,39 @@
   display: flex;
   gap: 1.5rem;
   z-index: 3;
-  opacity: 0;
+  opacity: 1;
 }
+
+.socials.animate-fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
 .socials a {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-muted); /* text stays muted */
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
 }
-.socials a:hover { color: var(--gold); }
+
+/* ICON ONLY */
+.socials a svg {
+  color: var(--gold); /* icon is gold */
+  transition: color 0.2s ease;
+}
+
+/* hover behavior */
+.socials a:hover {
+  color: var(--text-muted); /* text stays muted */
+}
+
+.socials a:hover svg {
+  color: var(--gold); /* icon remains gold */
+}
+
 
 @media (max-width: 1024px) {
   .banner { flex-direction: column; min-height: auto; }
@@ -213,4 +244,67 @@
   .socials { left: 24px; bottom: 2rem; }
   .ctaRow { flex-direction: column; }
   .ctaRow .btn { text-align: center; justify-content: center; }
+}
+
+.playWrapper {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* From Uiverse.io adapted for CSS modules */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  padding: 0.125em;
+  background-image: linear-gradient(to bottom, #d5d5d5, #e8e8e8);
+  box-shadow: 0 1px 1px rgb(255 255 255 / 0.6);
+  font-size: 1.5em;
+  user-select: none;
+}
+
+.innerRing {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  background-color: #e8e8e8;
+  box-shadow:
+    inset 0 0 0.0625em 0.125em rgb(255 255 255 / 0.2),
+    inset 0 0.0625em 0.125em rgb(0 0 0 / 0.4);
+}
+
+.buttonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #e8e8e8;
+  box-shadow:
+    inset 0 -0.0625em 0.0625em 0.125em rgb(0 0 0 / 0.1),
+    inset 0 -0.125em 0.0625em rgb(0 0 0 / 0.2),
+    inset 0 0.1875em 0.0625em rgb(255 255 255 / 0.3),
+    0 0.125em 0.125em rgb(0 0 0 / 0.5);
+  transition: 200ms ease-out;
+}
+
+.buttonIcon:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.buttonIcon:hover {
+  color: red;
 }

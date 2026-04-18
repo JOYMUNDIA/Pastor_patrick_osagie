@@ -7,7 +7,7 @@ const Aboutsection: React.FC = () => {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.textCol}>
-            <h2 className={styles.heading}>Meet Pastor Patrick D. Osagie</h2>
+            <h2 className={styles.heading}>Meet Pastor Patrick D. Osagie</h2><br/>
             <p>
               Pastor Patrick D. Osagie serves under the <strong>RCCG Power Assembly Mega Church</strong> and is deeply passionate about youth ministry as the <strong>Continental Youth Pastor</strong>. Beyond his pastoral duties, he is a talented saxophonist and musician, sharing his gift of worship with congregations and audiences alike.
             </p>

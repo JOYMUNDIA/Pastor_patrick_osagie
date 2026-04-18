@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
       {/* Sidebar */}
       <div className={`${styles.sidebar} ${isSidebarOpen ? styles.sidebarActive : ''}`}>
         <button className={styles.closeBtn} onClick={closeSidebar}>
-          <i className="fas fa-times"></i>
+          ✕
         </button>
         <nav className={styles.sidebarNav}>
           <a href="#home" className={`${styles.sidebarLink} active`} onClick={closeSidebar}>Home</a>
