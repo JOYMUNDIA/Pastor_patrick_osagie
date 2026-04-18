@@ -13,7 +13,7 @@ const Youthsection: React.FC = () => {
           {/* Card 1 */}
           <div className={`${styles.card} animate-card`}>
             <div className={styles.imgWrap}>
-              <img src="/images/youth-event1.jpg" alt="Youth Conference" />
+              <img src="/images/youth_conferences.jpg" alt="Youth Conference" />
             </div>
             <div className={styles.body}>
               <h3>Youth Conferences</h3>
@@ -24,7 +24,7 @@ const Youthsection: React.FC = () => {
           {/* Card 2 */}
           <div className={`${styles.card} animate-card`}>
             <div className={styles.imgWrap}>
-              <img src="/images/youth-mentorship.jpg" alt="Mentorship Program" />
+              <img src="/images/mentorship.jpg" alt="Mentorship Program" />
             </div>
             <div className={styles.body}>
               <h3>Mentorship Programs</h3>
@@ -35,7 +35,7 @@ const Youthsection: React.FC = () => {
           {/* Card 3 */}
           <div className={`${styles.card} animate-card`}>
             <div className={styles.imgWrap}>
-              <img src="/images/youth-service.jpg" alt="Youth Service" />
+              <img src="/images/Youth_service.jpg" alt="Youth Service" />
             </div>
             <div className={styles.body}>
               <h3>Youth Services</h3>

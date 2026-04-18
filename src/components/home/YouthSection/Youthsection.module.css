@@ -3,7 +3,12 @@
   background: var(--white);
 }
 
+.section-desc{
+  padding: 1rem;
+}
+
 .cards {
+  padding-top: 1.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;

@@ -3,11 +3,13 @@ import styles from './Ministrycards.module.css';
 
 const Ministrycards: React.FC = () => {
   return (
-    <section id="ministry" className={`${styles.section} fade-in`}>
-      <div className="container">
-        <h2>Ministry & Youth Work</h2>
+    <section id="ministry" className={styles.section}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Ministry & Youth Work</h2>
+
         <div className={styles.grid}>
-          {/* Youth Ministry Card */}
+
+          {/* Youth Ministry */}
           <div className={styles.card}>
             <i className={`fas fa-users ${styles.icon}`}></i>
             <h3>Youth Ministry</h3>
@@ -16,33 +18,42 @@ const Ministrycards: React.FC = () => {
             </p>
           </div>
 
-          {/* Prayer Sessions Card */}
+          {/* Prayer Sessions */}
           <div className={styles.card}>
             <i className={`fas fa-praying-hands ${styles.icon}`}></i>
             <h3>Prayer Sessions</h3>
             <p>
-              Join regular online prayer sessions on Pastor Patrick's{' '}
-              <a href="https://facebook.com/pdosagie" target="_blank" rel="noopener noreferrer">
-                Facebook page
-              </a>{' '}
-              for spiritual renewal and community fellowship.
+              Join regular online prayer sessions on Pastor Patrick's Facebook page for spiritual renewal and community fellowship.
             </p>
-            <a href="https://facebook.com/pdosagie" target="_blank" rel="noopener noreferrer" className={styles.cta}>
+
+            <a
+              href="https://facebook.com/pdosagie"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btn}
+            >
               Join Prayer
             </a>
           </div>
 
-          {/* Podcast Card */}
+          {/* Podcast */}
           <div className={styles.card}>
             <i className={`fas fa-podcast ${styles.icon}`}></i>
             <h3>HOTFM Podcast</h3>
             <p>
-              Tune in to inspiring talks, teachings, and interviews on Pastor Patrick's weekly radio podcast on <strong>HOTFM</strong>.
+              Tune in to inspiring talks, teachings, and interviews on Pastor Patrick’s weekly radio podcast on HOTFM.
             </p>
-            <a href="https://hotfm.com" target="_blank" rel="noopener noreferrer" className={styles.cta}>
+
+            <a
+              href="https://hotfm.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btn}
+            >
               Listen Now
             </a>
           </div>
+
         </div>
       </div>
     </section>
