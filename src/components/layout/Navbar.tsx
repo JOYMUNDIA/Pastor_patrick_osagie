@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import styles from './Navbar.module.css';
 
 const Navbar: React.FC = () => {
@@ -18,14 +19,18 @@ const Navbar: React.FC = () => {
     <>
       <header className={`${styles.header} animate header-anim`}>
         <div className={styles.inner}>
-          <div className={styles.logo}>Patrick D. Osagie</div>
+          <div className={styles.logo}>
+            <Link href="/">Patrick D. Osagie</Link>
+          </div>
+
           <nav className={styles.nav}>
-            <a href="#home" className={`${styles.navLink} active`}>Home</a>
-            <a href="#about" className={styles.navLink}>About</a>
-            <a href="#ministry" className={styles.navLink}>Ministry</a>
-            <a href="#media" className={styles.navLink}>Media</a>
-            <a href="#contact" className={styles.navLink}>Contact</a>
+            <Link href="/" className={styles.navLink}>Home</Link>
+            <Link href="/about" className={styles.navLink}>About</Link>
+            <Link href="/ministry" className={styles.navLink}>Ministry</Link>
+            <Link href="/appointments" className={styles.navLink}>Appointments</Link>
+            <Link href="/contact" className={styles.navLink}>Contact</Link>
           </nav>
+
           <div className={styles.hamburger} onClick={toggleSidebar}>
             <span></span>
             <span></span>
@@ -39,17 +44,21 @@ const Navbar: React.FC = () => {
         <button className={styles.closeBtn} onClick={closeSidebar}>
           ✕
         </button>
+
         <nav className={styles.sidebarNav}>
-          <a href="#home" className={`${styles.sidebarLink} active`} onClick={closeSidebar}>Home</a>
-          <a href="#about" className={styles.sidebarLink} onClick={closeSidebar}>About</a>
-          <a href="#ministry" className={styles.sidebarLink} onClick={closeSidebar}>Ministry</a>
-          <a href="#media" className={styles.sidebarLink} onClick={closeSidebar}>Media</a>
-          <a href="#contact" className={styles.sidebarLink} onClick={closeSidebar}>Contact</a>
+          <Link href="/" className={styles.sidebarLink} onClick={closeSidebar}>Home</Link>
+          <Link href="/about" className={styles.sidebarLink} onClick={closeSidebar}>About</Link>
+          <Link href="/ministry" className={styles.sidebarLink} onClick={closeSidebar}>Ministry</Link>
+          <Link href="/appointments" className={styles.sidebarLink} onClick={closeSidebar}>Appointments</Link>
+          <Link href="/contact" className={styles.sidebarLink} onClick={closeSidebar}>Contact</Link>
         </nav>
       </div>
 
       {/* Overlay */}
-      <div className={`${styles.overlay} ${isSidebarOpen ? styles.overlayActive : ''}`} onClick={closeSidebar}></div>
+      <div
+        className={`${styles.overlay} ${isSidebarOpen ? styles.overlayActive : ''}`}
+        onClick={closeSidebar}
+      ></div>
     </>
   );
 };
