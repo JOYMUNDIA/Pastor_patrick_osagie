@@ -2,7 +2,7 @@
 import { useState, FormEvent } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import styles from './appointments.module.css';
+import styles from './appointments.css';
 
 const PURPOSES = [
   'Pastoral Counselling',

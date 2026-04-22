@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { MinistryLink } from '@/types';
-import styles from './ministry.module.css';
+import styles from './ministry.css';
 
 type Tab = 'prayer' | 'service' | 'podcast' | 'article';
 
