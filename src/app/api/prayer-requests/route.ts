@@ -7,7 +7,7 @@ export async function GET() {
   if (!user || !hasRole(user.role, 'admin')) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
   }
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('prayer_requests')
     .select('*')
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
   if (!request) {
     return NextResponse.json({ error: 'Prayer request text required' }, { status: 400 });
   }
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('prayer_requests')
     .insert({

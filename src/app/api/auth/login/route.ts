@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email and password required' }, { status: 400 });
     }
 
-    const db = supabaseAdmin();
+    const db = supabaseAdmin;
     const { data: user, error } = await db
       .from('users')
       .select('id, email, name, role, password_hash')
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       sub: user.id,
       email: user.email,
       name: user.name,
-      role: user.role,
+      role: user.role as 'admin' | 'editor' | 'user',
     });
 
     const response = NextResponse.json({

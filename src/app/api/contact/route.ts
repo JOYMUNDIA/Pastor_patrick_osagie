@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   if (!name || !email || !subject || !message) {
     return NextResponse.json({ error: 'All fields required' }, { status: 400 });
   }
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('contact_messages')
     .insert({ name, email, subject, message })

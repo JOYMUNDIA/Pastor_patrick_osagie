@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
   }
 
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('appointments')
     .select('*')
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Required fields missing' }, { status: 400 });
   }
 
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('appointments')
     .insert({

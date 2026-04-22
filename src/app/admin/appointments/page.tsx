@@ -1,9 +1,9 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { Appointment } from '@/types';
+import { Appointment, AppointmentStatus } from '@/types';
 import styles from './appointments.module.css';
 
-type FilterStatus = 'all' | 'pending' | 'confirmed' | 'cancelled';
+type FilterStatus = 'all' | AppointmentStatus;
 
 export default function AdminAppointmentsPage() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
@@ -23,7 +23,7 @@ export default function AdminAppointmentsPage() {
 
   useEffect(() => { fetchAppointments(); }, [fetchAppointments]);
 
-  const updateStatus = async (id: string, status: 'confirmed' | 'cancelled' | 'pending') => {
+  const updateStatus = async (id: string, status: AppointmentStatus) => {
     setActionLoading(id);
     try {
       const res = await fetch(`/api/appointments/${id}`, {
@@ -37,12 +37,16 @@ export default function AdminAppointmentsPage() {
     } finally { setActionLoading(null); }
   };
 
-  const filtered = filter === 'all' ? appointments : appointments.filter(a => a.status === filter);
+  const filtered =
+    filter === 'all'
+      ? appointments
+      : appointments.filter(a => a.status === filter);
+
   const counts = {
     all: appointments.length,
-    pending: appointments.filter(a => a.status === 'pending').length,
-    confirmed: appointments.filter(a => a.status === 'confirmed').length,
-    cancelled: appointments.filter(a => a.status === 'cancelled').length,
+    pending: appointments.filter(a => a.status === AppointmentStatus.Pending).length,
+    confirmed: appointments.filter(a => a.status === AppointmentStatus.Confirmed).length,
+    cancelled: appointments.filter(a => a.status === AppointmentStatus.Cancelled).length,
   };
 
   return (
@@ -59,14 +63,21 @@ export default function AdminAppointmentsPage() {
 
       {/* Filter tabs */}
       <div className={styles.filters}>
-        {(['all', 'pending', 'confirmed', 'cancelled'] as FilterStatus[]).map(f => (
+        {([
+          'all',
+          AppointmentStatus.Pending,
+          AppointmentStatus.Confirmed,
+          AppointmentStatus.Cancelled,
+        ] as FilterStatus[]).map(f => (
           <button
             key={f}
             className={`${styles.filter} ${filter === f ? styles.filterActive : ''}`}
             onClick={() => setFilter(f)}
           >
-            {f.charAt(0).toUpperCase() + f.slice(1)}
-            <span className={styles.filterCount}>{counts[f]}</span>
+            String(f).charAt(0).toUpperCase() + String(f).slice(1)
+            <span className={styles.filterCount}>
+              {counts[f === 'all' ? 'all' : f]}
+            </span>
           </button>
         ))}
       </div>
@@ -93,7 +104,7 @@ export default function AdminAppointmentsPage() {
                     <span className={styles.email}>{appt.email}</span>
                   </div>
                 </div>
-                <span className={`badge ${appt.status === 'confirmed' ? 'badge-green' : appt.status === 'cancelled' ? 'badge-red' : 'badge-gold'}`}>
+                <span className={`badge ${appt.status === AppointmentStatus.Confirmed ? 'badge-green' : appt.status === AppointmentStatus.Cancelled ? 'badge-red' : 'badge-gold'}`}>
                   {appt.status}
                 </span>
               </div>
@@ -116,28 +127,28 @@ export default function AdminAppointmentsPage() {
                 </div>
               )}
               <div className={styles.actions}>
-                {appt.status !== 'confirmed' && (
+                {appt.status !== AppointmentStatus.Confirmed && (
                   <button
                     className={`btn btn-primary ${styles.actionBtn}`}
-                    onClick={() => updateStatus(appt.id, 'confirmed')}
+                    onClick={() => updateStatus(appt.id, AppointmentStatus.Confirmed)}
                     disabled={actionLoading === appt.id}
                   >
                     {actionLoading === appt.id ? '…' : '✓ Confirm'}
                   </button>
                 )}
-                {appt.status !== 'cancelled' && (
+                {appt.status !== AppointmentStatus.Cancelled && (
                   <button
                     className={`btn ${styles.cancelBtn}`}
-                    onClick={() => updateStatus(appt.id, 'cancelled')}
+                    onClick={() => updateStatus(appt.id, AppointmentStatus.Cancelled)}
                     disabled={actionLoading === appt.id}
                   >
                     ✗ Cancel
                   </button>
                 )}
-                {appt.status !== 'pending' && (
+                {appt.status !== AppointmentStatus.Pending && (
                   <button
                     className={`btn btn-outline ${styles.actionBtn}`}
-                    onClick={() => updateStatus(appt.id, 'pending')}
+                    onClick={() => updateStatus(appt.id, AppointmentStatus.Pending)}
                     disabled={actionLoading === appt.id}
                     style={{ fontSize: '0.8rem', padding: '0.4rem 0.875rem' }}
                   >

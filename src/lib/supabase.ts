@@ -1,22 +1,14 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import type { Database } from '../types/supabase-types';
+import { createClient } from '@supabase/supabase-js';
+import type { Database } from '@/types/supabase';
 
-// FRONTEND client (publishable key)
-export const supabase: SupabaseClient<Database> = createClient<Database>(
+// Frontend client
+export const supabase = createClient<Database>(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
 );
 
-// BACKEND client (secret key)
-export const supabaseAdmin = (): SupabaseClient<Database> => {
-  return createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SECRET_KEY!,
-    {
-      auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-      },
-    }
-  );
-};
+// Backend/admin client
+export const supabaseAdmin = createClient<Database>(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SECRET_KEY!
+);

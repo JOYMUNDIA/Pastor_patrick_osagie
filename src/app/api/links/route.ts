@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get('category');
 
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   let query = db
     .from('ministry_links')
     .select('*')
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'category, title and url are required' }, { status: 400 });
   }
 
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data, error } = await db
     .from('ministry_links')
     .insert({ category, title, description, url, date, thumbnail, created_by: user.sub, is_published: true })

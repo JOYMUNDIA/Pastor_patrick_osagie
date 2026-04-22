@@ -3,7 +3,7 @@ import styles from './dashboard.module.css';
 import Link from 'next/link';
 
 async function getStats() {
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const [appts, prayers, links] = await Promise.all([
     db.from('appointments').select('status', { count: 'exact' }),
     db.from('prayer_requests').select('id', { count: 'exact' }),
@@ -21,7 +21,7 @@ async function getStats() {
 }
 
 async function getRecentAppointments() {
-  const db = supabaseAdmin();
+  const db = supabaseAdmin;
   const { data } = await db
     .from('appointments')
     .select('id, name, purpose, preferred_date, preferred_time, status')
