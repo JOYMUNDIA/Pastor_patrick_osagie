@@ -3,7 +3,7 @@
    Design System: Sacred Luxury
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Cantarell:wght@400;700&family=Corinthia:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Open+Sans:wght@400;600;700&family=Corinthia:wght@400;700&display=swap');
 
 /* -------------------- COLORS & FONTS -------------------- */
 :root {
@@ -28,7 +28,7 @@
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   --font-display: 'Fjalla One', sans-serif;
-  --font-body: 'Cantarell', system-ui, sans-serif;
+  --font-body: 'Open Sans', system-ui, sans-serif;
   --font-script: 'Corinthia', cursive;
 
   --background: var(--stone);
@@ -62,6 +62,7 @@ html {
 
 body {
   font-family: var(--font-body);
+  font-size: 1.05rem;
   color: var(--foreground);
   background: var(--background);
   min-height: 100%;
