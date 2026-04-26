@@ -27,6 +27,8 @@
   --radius-lg: 20px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+  --header-height: 60px; /* adjust to your real header height */
+
   --font-display: 'Fjalla One', sans-serif;
   --font-body: 'Open Sans', system-ui, sans-serif;
   --font-script: 'Corinthia', cursive;
@@ -72,6 +74,10 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  padding-top: var(--header-height);
 }
 
 a {

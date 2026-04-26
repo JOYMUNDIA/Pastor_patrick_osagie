@@ -49,6 +49,7 @@ const Navbar: React.FC = () => {
         <nav className={styles.sidebarNav}>
           <Link href="/" className={styles.sidebarLink} onClick={closeSidebar}>Home</Link>
           <Link href="/about" className={styles.sidebarLink} onClick={closeSidebar}>About</Link>
+          <Link href="/devotional" className={styles.navLink}>Devotional</Link>
           <Link href="/ministry" className={styles.sidebarLink} onClick={closeSidebar}>Ministry</Link>
           <Link href="/appointments" className={styles.sidebarLink} onClick={closeSidebar}>Appointments</Link>
           <Link href="/contact" className={styles.sidebarLink} onClick={closeSidebar}>Contact</Link>

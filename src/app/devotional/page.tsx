@@ -5,6 +5,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Devotional } from '@/types';
 import styles from './devotional.module.css';
+import HeroRotator from '@/components/hero/HeroRotator';
+import BannerOne from '@/components/banners/BannerOne';
+import BannerTwo from '@/components/banners/BannerTwo';
 
 function DevotionalContent() {
   const searchParams = useSearchParams();
@@ -77,13 +80,24 @@ function DevotionalContent() {
       <Navbar />
       <main className={styles.main}>
         {/* Hero */}
-        <div className={styles.hero}>
-          <div className="container">
-            <span className={styles.overline}>Daily Word</span>
-            <h1>Open Heavens Devotional</h1>
-            <p>A daily portion of God&apos;s Word to nourish your spirit and guide your steps.</p>
-          </div>
-        </div>
+        <HeroRotator
+          banners={[
+            <BannerOne
+              key="b1"
+              imageSrc="/images/devotional.jpg"
+              label="Daily Word"
+              title="Open Heavens Devotional"
+              subtitle="A daily portion of God's Word to nourish your spirit and guide your steps."
+            />,
+            <BannerTwo
+              key="b2"
+              imageSrc="/images/devotional.jpg"
+              label="A daily portion of God's Word\nto nourish your spirit and guide your steps."
+              subtitle="Daily Word"
+              title={`Open Heavens\nDevotional`}
+            />,
+          ]}
+        />
 
         <div className={styles.body}>
           <div className="container">
