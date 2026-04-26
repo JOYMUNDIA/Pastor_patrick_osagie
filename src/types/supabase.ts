@@ -80,6 +80,71 @@ export type Database = {
         }
         Relationships: []
       }
+      devotionals: {
+        Row: {
+          author: string | null
+          bible_in_one_year: string | null
+          bible_reading: string | null
+          bible_reading_text: string | null
+          created_at: string | null
+          created_by: string | null
+          date: string
+          hymn_lyrics: string | null
+          hymn_title: string | null
+          id: string
+          is_published: boolean | null
+          memorise_reference: string | null
+          memorise_verse: string | null
+          message: string
+          prayer_point: string
+          topic: string
+        }
+        Insert: {
+          author?: string | null
+          bible_in_one_year?: string | null
+          bible_reading?: string | null
+          bible_reading_text?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          date: string
+          hymn_lyrics?: string | null
+          hymn_title?: string | null
+          id?: string
+          is_published?: boolean | null
+          memorise_reference?: string | null
+          memorise_verse?: string | null
+          message: string
+          prayer_point: string
+          topic: string
+        }
+        Update: {
+          author?: string | null
+          bible_in_one_year?: string | null
+          bible_reading?: string | null
+          bible_reading_text?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          date?: string
+          hymn_lyrics?: string | null
+          hymn_title?: string | null
+          id?: string
+          is_published?: boolean | null
+          memorise_reference?: string | null
+          memorise_verse?: string | null
+          message?: string
+          prayer_point?: string
+          topic?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "devotionals_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ministry_links: {
         Row: {
           category: string
@@ -192,7 +257,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      appointment_status: "pending" | "confirmed" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -319,6 +384,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      appointment_status: ["pending", "confirmed", "cancelled"],
+    },
   },
 } as const

@@ -80,6 +80,28 @@ export interface Appointment {
 }
 
 // ------------------------
+// Devotional
+// ------------------------
+export interface Devotional {
+  id: string;
+  date: string;
+  topic: string;
+  memorise_verse: string;
+  memorise_reference: string;
+  bible_reading: string;
+  bible_reading_text?: string;
+  message: string;
+  prayer_point: string;
+  author: string;
+  bible_in_one_year?: string;
+  hymn_title?: string;
+  hymn_lyrics?: string;
+  is_published: boolean;
+  created_by: string;
+  created_at: string;
+}
+
+// ------------------------
 // Prayer Requests
 // ------------------------
 export interface PrayerRequest {

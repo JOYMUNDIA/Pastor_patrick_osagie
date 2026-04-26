@@ -32,9 +32,10 @@
   background: var(--white);
   border-radius: 16px;
   padding: 2rem;
-  border: 1.5px solid var(--border);
+  /*border: 1.5px solid var(--border);*/
   position: sticky;
   top: 100px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 .contactInfo h3 { font-size:1.1rem; font-weight:800; color:var(--navy); margin-bottom:1.5rem; }
 .contactItem {
@@ -58,7 +59,8 @@
   background: var(--white);
   border-radius: 16px;
   overflow: hidden;
-  border: 1.5px solid var(--border);
+  /*border: 1.5px solid var(--border);*/
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 .tabs {
   display: flex;

@@ -26,6 +26,7 @@ const Navbar: React.FC = () => {
           <nav className={styles.nav}>
             <Link href="/" className={styles.navLink}>Home</Link>
             <Link href="/about" className={styles.navLink}>About</Link>
+            <Link href="/devotional" className={styles.navLink}>Devotional</Link>
             <Link href="/ministry" className={styles.navLink}>Ministry</Link>
             <Link href="/appointments" className={styles.navLink}>Appointments</Link>
             <Link href="/contact" className={styles.navLink}>Contact</Link>

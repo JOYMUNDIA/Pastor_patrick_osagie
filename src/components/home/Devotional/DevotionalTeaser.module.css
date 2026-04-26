@@ -1,0 +1,158 @@
+.section {
+  padding: 100px 0;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(244,180,0,0.08) 0%, transparent 65%);
+  top: -200px; right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.section::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(244,180,0,0.05) 0%, transparent 65%);
+  bottom: -100px; left: -50px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* Left */
+.overline {
+  display: block;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.75rem;
+}
+.heading {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900; color: var(--white);
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  max-width: 360px;
+}
+
+/* Right - Card */
+.devCard {
+  display: block;
+  text-decoration: none;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(244,180,0,0.25);
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.devCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.devCard:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(244,180,0,0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.devDate {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.16em; color: var(--gold);
+  margin-bottom: 0.875rem;
+}
+
+.devTopic {
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--white); line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.devVerse {
+  background: rgba(255,255,255,0.05);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+}
+.devVerse cite {
+  display: block;
+  margin-top: 0.625rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+
+.devPrayer {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+  background: rgba(244,180,0,0.08);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.25rem;
+}
+.devPrayer span { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.devPrayer p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.readMore {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+
+/* No devotional state */
+.noDevCard {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px dashed rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.noDevCard span { font-size: 3rem; display: block; margin-bottom: 1rem; }
+.noDevCard h3 { font-size: 1.25rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+.noDevCard p { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .sub { max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .devCard { padding: 1.5rem; }
+  .devTopic { font-size: 1.25rem; }
+}

@@ -12,6 +12,7 @@ interface Props {
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: '📊', exact: true },
   { href: '/admin/appointments', label: 'Appointments', icon: '📅' },
+  { href: '/admin/devotionals', label: 'Devotionals', icon: '📖'},
   { href: '/admin/links', label: 'Ministry Links', icon: '🔗' },
   { href: '/admin/prayers', label: 'Prayer Requests', icon: '🙏' },
 ];
