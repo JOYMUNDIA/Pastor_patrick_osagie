@@ -11,10 +11,9 @@ import styles from './hero.module.css';
 
 export default function HeroRotator({
   banners,
-  interval = 15
-  
-  000,
-}: {
+  interval = 15000,
+}: 
+{
   banners: React.ReactNode[];
   interval?: number;
 }) {
