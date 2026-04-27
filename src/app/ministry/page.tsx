@@ -5,6 +5,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { MinistryLink } from '@/types';
 import styles from './ministry.module.css';
+import HeroRotator from '@/components/hero/HeroRotator';
+import BannerOne from '@/components/banners/BannerOne';
+import BannerTwo from '@/components/banners/BannerTwo';
 
 type Tab = 'prayer' | 'service' | 'podcast' | 'article';
 
@@ -53,18 +56,82 @@ function MinistryContent() {
 
   const currentTab = TABS.find(t => t.id === activeTab)!;
 
+  const heroBanners = {
+  prayer: [
+    <BannerOne
+      key="prayer1"
+      imageSrc="/images/lunch_hour_prayer.jpeg"
+      label="Lunch Hour Prayers"
+      title="Midday Intercession"
+      subtitle="Join daily prayer sessions for spiritual renewal and breakthrough."
+    />,
+    <BannerTwo
+      key="prayer2"
+      imageSrc="/images/lunch_hour_prayer.jpeg"
+      label="Prayer Watch"
+      title="Powerful Midday Prayers"
+      subtitle="Monday to Friday on Facebook Live"
+    />
+  ],
+
+  service: [
+    <BannerOne
+      key="service1"
+      imageSrc="/images/church_service.jpg"
+      label="Sunday Service"
+      title="Worship Experience"
+      subtitle="Encounter God every Sunday at RCCG Power Assembly Mega Church."
+    />,
+    <BannerTwo
+      key="service2"
+      imageSrc="/images/church_service.jpg"
+      label="Church Service"
+      title="Spirit Filled Worship"
+      subtitle="Join us in person or online"
+    />
+  ],
+
+  podcast: [
+    <BannerOne
+      key="podcast1"
+      imageSrc="/images/podcast.jpg"
+      label="HOTFM Podcast"
+      title="Faith Conversations"
+      subtitle="Weekly teachings and discussions"
+    />,
+    <BannerTwo
+      key="podcast2"
+      imageSrc="/images/podcast.jpg"
+      label="Radio Ministry"
+      title="HOTFM Broadcast"
+      subtitle="Faith-based media outreach"
+    />
+  ],
+
+  article: [
+    <BannerOne
+      key="article1"
+      imageSrc="/images/articles.jpg"
+      label="Faith Articles"
+      title="Spiritual Growth"
+      subtitle="Insights on faith, leadership, and life"
+    />,
+    <BannerTwo
+      key="article2"
+      imageSrc="/images/articles.jpg"
+      label="Bible Insights"
+      title="Deep Teaching"
+      subtitle="In-depth biblical understanding"
+    />
+  ],
+};
+
   return (
     <>
       <Navbar />
       <main className={styles.main}>
         {/* Hero Banner */}
-        <div className={styles.hero}>
-          <div className="container">
-            <span className={styles.overline}>Ministry Hub</span>
-            <h1 className={styles.heroTitle}>Resources & Media</h1>
-            <p className={styles.heroDesc}>Access prayer sessions, Sunday services, podcasts and faith articles — all in one place.</p>
-          </div>
-        </div>
+        <HeroRotator banners={heroBanners[activeTab]} />
 
         {/* Tab Navigation */}
         <div className={styles.tabBar}>
