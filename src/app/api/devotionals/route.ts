@@ -1,26 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
-// GET /api/devotionals?date=YYYY-MM-DD  or  ?month=YYYY-MM
+// Helper to get first and last day of a month
+function getMonthRange(month: string) {
+  const [year, monthNum] = month.split('-').map(Number);
+
+  // Start date = first day of the month
+  const start = new Date(year, monthNum - 1, 1);
+  // End date = last day of the month
+  const end = new Date(year, monthNum, 0);
+
+  return {
+    startStr: start.toISOString().split('T')[0],
+    endStr: end.toISOString().split('T')[0],
+  };
+}
+
+// GET /api/devotionals?date=YYYY-MM-DD  or  ?month=YYYY-MM  (&admin=true)
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
+
   const date = searchParams.get('date');
   const month = searchParams.get('month');
+  const isAdmin = searchParams.get('admin') === 'true';
 
   const db = supabaseAdmin;
 
   // 📅 Get all devotionals for a month (for calendar view)
   if (month) {
-    const start = `${month}-01`;
-    const end = `${month}-31`;
+    const { startStr, endStr } = getMonthRange(month);
 
-    const { data, error } = await db
+    let query = db
       .from('devotionals')
-      .select('date, topic, id')
-      .eq('is_published', true)
-      .gte('date', start)
-      .lte('date', end)
-      .order('date');
+      .select('id, date, topic, is_published')
+      .gte('date', startStr)
+      .lte('date', endStr)
+      .order('date', { ascending: true });
+
+    // Only filter by published if NOT admin
+    if (!isAdmin) {
+      query = query.eq('is_published', true);
+    }
+
+    const { data, error } = await query;
 
     if (error) {
       console.error('❌ GET MONTH ERROR:', JSON.stringify(error, null, 2));
@@ -35,12 +57,16 @@ export async function GET(req: NextRequest) {
 
   // 📖 Get devotional by specific date
   if (date) {
-    const { data, error } = await db
+    let query = db
       .from('devotionals')
       .select('*')
-      .eq('date', date)
-      .eq('is_published', true)
-      .single();
+      .eq('date', date);
+
+    if (!isAdmin) {
+      query = query.eq('is_published', true);
+    }
+
+    const { data, error } = await query.maybeSingle();
 
     if (error) {
       console.warn('⚠️ No devotional found for date:', date);
@@ -53,12 +79,16 @@ export async function GET(req: NextRequest) {
   // 📌 Default: today's devotional
   const today = new Date().toISOString().split('T')[0];
 
-  const { data, error } = await db
+  let query = db
     .from('devotionals')
     .select('*')
-    .eq('date', today)
-    .eq('is_published', true)
-    .single();
+    .eq('date', today);
+
+  if (!isAdmin) {
+    query = query.eq('is_published', true);
+  }
+
+  const { data, error } = await query.maybeSingle();
 
   if (error) {
     console.warn('⚠️ No devotional found for today:', today);
