@@ -68,7 +68,16 @@ export default function BannerTwo({
             ))}
         </div>
         )}
-        {subtitle && <span className={styles.titleSmall}>{subtitle}</span>}
+        {subtitle && (
+            <span className={styles.titleSmall}>
+                {subtitle.split('\n').map((line, i) => (
+                <span key={i}>
+                    {line}
+                    {i < subtitle.split('\n').length - 1 && <br />}
+                </span>
+                ))}
+            </span>
+            )}
         {title && (
             <span className={`${styles.titleBig} ${styles.banner2Title}`}>
                 {title.split('\n').map((line, i) => (
